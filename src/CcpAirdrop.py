@@ -42,7 +42,7 @@ class CcpAirdrop():
         # f.write(f'airdropAll start:{self.LogTime()}\n')
         # f.write(f'start:{start} end:{end}\n')
         # f.close()
-        print(f'airdropAll start:{self.LogTime()}\n')
+        print(f'airdrop start:{self.LogTime()}\n')
         print(f'start:{start} end:{end}\n')
 
         for i in range(cnt):
@@ -52,7 +52,7 @@ class CcpAirdrop():
             walletAddr = account.p2pkh_address()
 
             try:
-                time.sleep(0.5)
+                time.sleep(1)
                 nonce = self.web3.eth.getTransactionCount(walletAddr)
 
                 tx_content = {
