@@ -38,10 +38,12 @@ class CcpAirdrop():
         end = self.maxAddressIndex
         cnt = end - start + 1
 
-        f = open('./logs/airdropAll.log', 'w')
-        f.write(f'airdropAll start:{self.LogTime()}\n')
-        f.write(f'start:{start} end:{end}\n')
-        f.close()
+        # f = open('./logs/airdropAll.log', 'w')
+        # f.write(f'airdropAll start:{self.LogTime()}\n')
+        # f.write(f'start:{start} end:{end}\n')
+        # f.close()
+        print(f'airdropAll start:{self.LogTime()}\n')
+        print(f'start:{start} end:{end}\n')
 
         for i in range(cnt):
             address_index = i + start
@@ -71,15 +73,17 @@ class CcpAirdrop():
                 result = self.web3.eth.wait_for_transaction_receipt(tx_hash)
                 success = result['status']
 
-                f = open('./logs/airdropAll.log', 'a')
-                f.write(f'{self.LogTime()} {address_index}:{walletAddr}:{success}\n')
-                f.close()
+                # f = open('./logs/airdropAll.log', 'a')
+                # f.write(f'{self.LogTime()} {address_index}:{walletAddr}:{success}\n')
+                # f.close()
+                print(f'{self.LogTime()} {address_index}:{walletAddr}:{success}\n')
+
             except Exception as e:
                 print(f'{e}')
 
-                f = open('./logs/airdropAll.error.log', 'a')
-                f.write(f'{self.LogTime()} {address_index}:{walletAddr}:{privateKey}{e}\n')
-                f.close()
+                # f = open('./logs/airdropAll.error.log', 'a')
+                # f.write(f'{self.LogTime()} {address_index}:{walletAddr}:{privateKey}{e}\n')
+                # f.close()
 
     def transferAll(self):
         mainAccount = self.wallet.GetAddress(0)

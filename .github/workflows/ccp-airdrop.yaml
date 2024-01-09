@@ -6,7 +6,7 @@ on:
       - main
   schedule:
     - cron: '0 6 * * *'  # 毎日6時に実行 (UTC時間)
-    
+
 jobs:
   example-job:
     runs-on: ubuntu-latest
@@ -32,4 +32,10 @@ jobs:
 
       - name: Run Python Script
         run: |
-          python main.py
+          python main.py > output.log
+
+      - name: Upload Log File
+        uses: actions/upload-artifact@v2
+        with:
+          name: log-files
+          path: output.log
