@@ -1,0 +1,9 @@
+[
+	{
+		"inputs": [],
+		"name": "airdrop",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	}
+]
