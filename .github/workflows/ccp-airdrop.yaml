@@ -1,14 +1,15 @@
 name: ccp-airdrop schedule
 
 on:
-  push:
-    branches:
-      - main
+  # push:
+  #   branches:
+  #     - main
   schedule:
     - cron: '0 6 * * *'  # 毎日6時に実行 (UTC時間)
+  workflow_dispatch:
 
 jobs:
-  example-job:
+  airdrop-job:
     runs-on: ubuntu-latest
     
     env:
