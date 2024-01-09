@@ -4,7 +4,9 @@ on:
   push:
     branches:
       - main
-
+  schedule:
+    - cron: '0 6 * * *'  # 毎日6時に実行 (UTC時間)
+    
 jobs:
   example-job:
     runs-on: ubuntu-latest
@@ -21,7 +23,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
-          python-version: 3.x
+          python-version: 3.8
 
       - name: Install Dependencies
         run: |
