@@ -6,7 +6,7 @@ class MyHDWallet():
 
     def __init__(self):
         mnemonic = ""
-
+        hd_wallet=""
     def Generatenemonic(self):
         # Choose strength 128, 160, 192, 224 or 256
         strength: int = 128  # Default is 128
