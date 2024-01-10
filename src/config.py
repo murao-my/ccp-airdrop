@@ -2,6 +2,8 @@ import os
 from os.path import join, dirname
 from dotenv import load_dotenv
 # from src.MyEncryptUtil import *
+import datetime
+import time
 
 load_dotenv(verbose=True)
 dotenv_path = join(dirname(__file__), ".env")
@@ -35,11 +37,18 @@ class TokenAddress():
     MCHV_airdropAddr = "0xec7f768Eff185fA04043d6F29dd098a05dd8a332"
     
 def startAddressIndex():
-    return int(os.environ.get("startAddressIndex"))
+    group = int(os.environ.get("group", 1))
+    start = int(os.environ.get("startAddressIndex", -1))
+    if start == -1:
+        return (group - 1) * 1200 + 1
+    return start
 
 def maxAddressIndex():
-    return int(os.environ.get("maxAddressIndex"))
+    group = int(os.environ.get("group", 1))
+    max = int(os.environ.get("maxAddressIndex", -1))
+    if max == -1:
+        return group * 1200
+    return max
 
 def airdropInterval():
-    return float(os.environ.get("airdropInterval"))
-
+    return float(os.environ.get("airdropInterval", 0.3))
