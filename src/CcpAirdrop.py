@@ -12,7 +12,6 @@ class CcpAirdrop():
     
     def __init__(self):
         self.wallet = MyHDWallet()
-        self.wallet.SetMnemonic(src.config.getMnemonicPhrase())
 
         self.startAddressIndex = src.config.startAddressIndex()
         self.maxAddressIndex = src.config.maxAddressIndex()
