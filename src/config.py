@@ -39,3 +39,7 @@ def startAddressIndex():
 
 def maxAddressIndex():
     return int(os.environ.get("maxAddressIndex"))
+
+def airdropInterval():
+    return float(os.environ.get("airdropInterval"))
+

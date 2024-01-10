@@ -5,7 +5,7 @@ on:
   #   branches:
   #     - main
   schedule:
-    - cron: '55 5 * * *'  # 毎日5時55分に実行 (UTC時間)
+    - cron: '50 5 * * *'  # 毎日5時55分に実行 (UTC時間)
   workflow_dispatch:
 
 jobs:
@@ -16,6 +16,7 @@ jobs:
       mnemonic: ${{ secrets.mnemonic }}
       startAddressIndex: 1
       maxAddressIndex: 1200
+      airdropInterval: 0.3
 
     steps:
       - name: Checkout Repository
