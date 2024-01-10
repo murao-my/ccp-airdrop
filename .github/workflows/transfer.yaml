@@ -1,0 +1,37 @@
+name: transfer
+
+on:
+  workflow_dispatch:
+
+jobs:
+  transfer-job:
+    runs-on: ubuntu-latest
+    
+    env:
+      mnemonic: ${{ secrets.mnemonic }}
+      startAddressIndex: 1
+      maxAddressIndex: 3000
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.8
+
+      - name: Install Dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Run Python Script
+        run: |
+          python transfer.py > output.log
+
+      - name: Upload Log File
+        uses: actions/upload-artifact@v2
+        with:
+          name: log-files
+          path: output.log
