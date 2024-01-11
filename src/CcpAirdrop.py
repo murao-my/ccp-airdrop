@@ -14,7 +14,7 @@ class CcpAirdrop():
     
     def __init__(self):
         self.wallet = MyHDWallet()
-
+        self.wallet.SetMnemonic(src.config.getMnemonicPhrase())#mnemonicを.envから取得
         self.startAddressIndex = src.config.startAddressIndex()
         self.maxAddressIndex = src.config.maxAddressIndex()
         self.airdropInterval = src.config.airdropInterval()
