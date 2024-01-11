@@ -1,15 +1,10 @@
-name: ccp-airdrop schedule
+name: transfer
 
 on:
-  # push:
-  #   branches:
-  #     - main
-  schedule:
-    - cron: '50 5 * * *'  # 毎日5時55分に実行 (UTC時間)
   workflow_dispatch:
 
 jobs:
-  airdrop-job:
+  transfer-job:
     runs-on: ubuntu-latest
     
     env:
@@ -32,7 +27,7 @@ jobs:
 
       - name: Run Python Script
         run: |
-          python main.py > output.log
+          python transfer.py > output.log
 
       - name: Upload Log File
         uses: actions/upload-artifact@v2
