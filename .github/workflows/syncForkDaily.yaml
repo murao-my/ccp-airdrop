@@ -2,7 +2,7 @@ name: Sync Fork with Upstream
 
 on:
   schedule:
-    - cron: '15 0 * * *' # 毎日UTC15:00に実行(JST24:00)
+    - cron: '0 15 * * *' # 毎日UTC15:00に実行(JST24:00)
 
 jobs:
   sync:
