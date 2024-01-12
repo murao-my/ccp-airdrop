@@ -5,7 +5,7 @@ on:
   #   branches:
   #     - main
   schedule:
-    - cron: '50 5 * * *'  # 毎日5時50分に実行 (UTC時間)
+    - cron: '50 5 * * *'  # 毎日UTC05:50に実行(JST14:50)
   workflow_dispatch:
 
 jobs:

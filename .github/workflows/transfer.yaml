@@ -1,6 +1,8 @@
 name: transfer
 
 on:
+  schedule:
+    - cron: '30 7 * * *'  # 毎日UTC07:30に実行(JST16:30)
   workflow_dispatch:
 
 jobs:
