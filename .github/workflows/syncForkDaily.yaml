@@ -1,0 +1,25 @@
+name: Sync Fork with Upstream
+
+on:
+  schedule:
+    - cron: '15 0 * * *' # デイリーで実行 (UTC時間)
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Set upstream remote
+      run: git remote add upstream https://github.com/LideruBcgDev/ccp-airdrop.git
+
+    - name: Fetch upstream changes
+      run: git fetch upstream
+
+    - name: Merge upstream changes
+      run: git merge upstream/main
+
+    - name: Push changes to fork
+      run: git push origin main
+    
