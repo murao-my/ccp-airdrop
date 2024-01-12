@@ -15,7 +15,7 @@ jobs:
     env:
       mnemonic: ${{ secrets.mnemonic }}
       group: ${{ secrets.group || 1 }}
-      airdropInterval: 0
+      airdropInterval: 0.1
 
     steps:
       - name: Checkout Repository
