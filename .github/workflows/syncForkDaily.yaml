@@ -3,7 +3,8 @@ name: Sync Fork with Upstream
 on:
   schedule:
     - cron: '0 15 * * *' # 毎日UTC15:00に実行(JST24:00)
-
+  workflow_dispatch:
+  
 jobs:
   sync:
     runs-on: ubuntu-latest
