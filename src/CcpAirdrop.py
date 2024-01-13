@@ -44,17 +44,21 @@ class CcpAirdrop():
 
         print(f'{self.LogTime()} keepNonce start')
 
-        for i in range(cnt):
-            address_index = i + start
-            account = self.wallet.GetAddress(address_index)
-            walletAddr = account.p2pkh_address()
+        try:
+            for i in range(cnt):
+                time.sleep(0.1)
+                address_index = i + start
+                account = self.wallet.GetAddress(address_index)
+                walletAddr = account.p2pkh_address()
 
-            nonce = self.web3.eth.getTransactionCount(walletAddr)
-            self.wallet_nonces[walletAddr] = nonce
+                nonce = self.web3.eth.getTransactionCount(walletAddr)
+                self.wallet_nonces[address_index] = nonce
+        except Exception as e:
+            print(f'{self.LogTime()} keepNonce error：{e}')
 
-    def getNonce(self, walletAddr):
-        if walletAddr in self.wallet_nonces:
-            return self.wallet_nonces[walletAddr]
+    def getNonce(self, address_index, walletAddr):
+        if address_index in self.wallet_nonces:
+            return self.wallet_nonces[address_index]
         else:
             nonce = self.web3.eth.getTransactionCount(walletAddr)
             return nonce
@@ -76,8 +80,8 @@ class CcpAirdrop():
             print(f"passed. return.")
             return
 
-        # 正：残り時間(まだ10分以上ある場合は、待たない)
-        if (target_time - current_time).total_seconds() > 600:
+        # 正：残り時間(まだ15分以上ある場合は、待たない)
+        if (target_time - current_time).total_seconds() > 900:
             print(f"too early. return.")
             return
 
@@ -118,7 +122,7 @@ class CcpAirdrop():
                 last_processed_time = time.time()
 
                 # nonce = self.web3.eth.getTransactionCount(walletAddr)
-                nonce = self.getNonce(walletAddr)
+                nonce = self.getNonce(address_index, walletAddr)
 
                 tx_content = {
                     # 'type': '0x2',
