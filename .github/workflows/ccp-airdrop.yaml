@@ -5,7 +5,7 @@ on:
   #   branches:
   #     - main
   schedule:
-    - cron: '50 5 * * *'  # 毎日UTC05:50に実行(JST14:50)
+    - cron: '45 5 * * *'  # 毎日UTC05:45に実行(JST14:45)
   workflow_dispatch:
 
 jobs:
@@ -15,7 +15,7 @@ jobs:
     env:
       mnemonic: ${{ secrets.mnemonic }}
       group: ${{ secrets.group || 1 }}
-      airdropInterval: 3
+      airdropInterval: 1
 
     steps:
       - name: Checkout Repository
