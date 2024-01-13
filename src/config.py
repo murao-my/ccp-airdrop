@@ -40,14 +40,14 @@ def startAddressIndex():
     group = int(os.environ.get("group", 1))
     start = int(os.environ.get("startAddressIndex", -1))
     if start == -1:
-        return (group - 1) * 3500 + 1
+        return (group - 1) * 1200 + 1
     return start
 
 def maxAddressIndex():
     group = int(os.environ.get("group", 1))
     max = int(os.environ.get("maxAddressIndex", -1))
     if max == -1:
-        return group * 3500
+        return group * 1200
     return max
 
 def airdropInterval():
