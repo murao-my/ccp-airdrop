@@ -1,17 +1,16 @@
-name: transfer
+name: ccp-airdrop manually run wait3s
 
 on:
-  schedule:
-    - cron: '30 7 * * *'  # 毎日UTC07:30に実行(JST16:30)
   workflow_dispatch:
 
 jobs:
-  transfer-job:
+  airdrop-job:
     runs-on: ubuntu-latest
     
     env:
       mnemonic: ${{ secrets.mnemonic }}
       group: ${{ secrets.group || 1 }}
+      airdropInterval: 3
 
     steps:
       - name: Checkout Repository
@@ -29,7 +28,7 @@ jobs:
 
       - name: Run Python Script
         run: |
-          python transfer.py > output.log
+          python main.py > output.log
 
       - name: Upload Log File
         uses: actions/upload-artifact@v2
